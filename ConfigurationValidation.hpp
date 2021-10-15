@@ -104,7 +104,24 @@
             #error AZ driver address for DRIVER_TYPE_TMC2209_UART not specified.
         #endif
     #endif
+#elif (BOARD == BOARD_ESP32_ESP32DUINO)
+    // Azimuth configuration
+    #if (AZ_STEPPER_TYPE == STEPPER_TYPE_NEMA17) && (AZ_DRIVER_TYPE == DRIVER_TYPE_A4988_GENERIC)
+    // Valid AZ stepper and driver combination
+    #elif (AZ_STEPPER_TYPE == STEPPER_TYPE_NEMA17) && (AZ_DRIVER_TYPE == DRIVER_TYPE_TMC2209_STANDALONE)
+    // Valid AZ stepper and driver combination
+    #elif (AZ_STEPPER_TYPE == STEPPER_TYPE_NEMA17) && (AZ_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
+    // Valid AZ stepper and driver combination
+    #else
+        #error Unsupported AZ stepper & driver combination. Use at own risk.
+    #endif
 
+    #if (AZ_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
+        #ifndef AZ_DRIVER_ADDRESS
+            // Serial bus address must be specified for TMC2209 in UART mode
+            #error AZ driver address for DRIVER_TYPE_TMC2209_UART not specified.
+        #endif
+    #endif
 #else
     #error Configuration does not support AZ. Use at own risk.
 #endif
@@ -142,7 +159,24 @@
             #error ALT driver address for DRIVER_TYPE_TMC2209_UART not specified.
         #endif
     #endif
+#elif (BOARD == BOARD_ESP32_ESP32DUINO)
+    // Altitude configuration
+    #if (ALT_STEPPER_TYPE == STEPPER_TYPE_NEMA17) && (ALT_DRIVER_TYPE == DRIVER_TYPE_A4988_GENERIC)
+    // Valid ALT stepper and driver combination
+    #elif (ALT_STEPPER_TYPE == STEPPER_TYPE_NEMA17) && (ALT_DRIVER_TYPE == DRIVER_TYPE_TMC2209_STANDALONE)
+    // Valid ALT stepper and driver combination
+    #elif (ALT_STEPPER_TYPE == STEPPER_TYPE_NEMA17) && (ALT_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
+    // Valid ALT stepper and driver combination
+    #else
+        #error Unsupported ALT stepper & driver combination. Use at own risk.
+    #endif
 
+    #if (ALT_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
+        #ifndef ALT_DRIVER_ADDRESS
+            // Serial bus address must be specified for TMC2209 in UART mode
+            #error ALT driver address for DRIVER_TYPE_TMC2209_UART not specified.
+        #endif
+    #endif
 #else
     #warning Configuration does not support ALT. Use at own risk.
 #endif
