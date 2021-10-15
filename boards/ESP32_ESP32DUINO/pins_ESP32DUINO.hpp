@@ -90,6 +90,33 @@
 
 #define SW_SERIAL_UART 0
 
+// DRIVER_TYPE_TMC2209_UART requires 4 digital pins in Arduino pin numbering
+#ifndef AZ_STEP_PIN
+    #define AZ_STEP_PIN 46  // STEP
+#endif
+#ifndef AZ_DIR_PIN
+    #define AZ_DIR_PIN 48  // DIR
+#endif
+#ifndef AZ_EN_PIN
+    #define AZ_EN_PIN 62  // Enable
+#endif
+#ifndef AZ_DIAG_PIN
+    #define AZ_DIAG_PIN 18  // only needed for autohome function
+#endif
+// DRIVER_TYPE_TMC2209_UART requires 4 digital pins in Arduino pin numbering
+#ifndef ALT_STEP_PIN
+    #define ALT_STEP_PIN 26  // STEP
+#endif
+#ifndef ALT_DIR_PIN
+    #define ALT_DIR_PIN 28  // DIR
+#endif
+#ifndef ALT_EN_PIN
+    #define ALT_EN_PIN 24  // Enable
+#endif
+#ifndef ALT_DIAG_PIN
+    #define ALT_DIAG_PIN 2  // only needed for autohome function
+#endif
+
 // DISPLAY_TYPE_LCD_JOY_I2C_SSD1306 requires 3 analog inputs in Arduino pin numbering
 #ifndef LCD_KEY_SENSE_X_PIN
     #define LCD_KEY_SENSE_X_PIN 34
